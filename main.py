@@ -19,6 +19,9 @@ app = FastAPI(
 )
 
 # Configure CORS for Android app
+# WARNING: This allows all origins for development purposes.
+# For production, restrict to specific origins:
+# allow_origins=["https://your-android-app-domain.com"]
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # In production, specify your Android app's origin
@@ -160,7 +163,7 @@ async def query_documents(query: QueryInput):
         
         # Generate answer (simplified - in production, use local LLM)
         if relevant_docs:
-            answer = self._generate_answer(query.query, relevant_docs)
+            answer = _generate_answer(query.query, relevant_docs)
         else:
             answer = "No relevant financial documents found for your query."
         

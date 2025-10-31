@@ -16,6 +16,8 @@
         android:theme="@style/Theme.FinanceTracker"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <!-- WARNING: usesCleartextTraffic is enabled for development/testing only.
+             For production builds, remove this attribute or set it to false and use HTTPS. -->
         <activity
             android:name=".MainActivity"
             android:exported="true"

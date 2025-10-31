@@ -12,9 +12,27 @@ android_app/captures/
 android_app/*.iml
 android_app/.externalNativeBuild
 android_app/.cxx
+*.apk
+*.aab
 
 # ChromaDB
 chroma_db/
+
+# Virtual environment
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
 
 # C extensions
 *.so
