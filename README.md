@@ -2,6 +2,12 @@
 
 A complete finance tracking system that uses Retrieval-Augmented Generation (RAG) with a local LLM to answer queries about your financial documents. Includes a Python backend API and an Android mobile application.
 
+## 🚀 Quick Start
+
+**New to this project?** Start with the [Quick Start Guide](QUICKSTART.md) to get up and running in 5 minutes!
+
+For detailed information, continue reading below.
+
 ## Architecture
 
 ### Backend (Python)
@@ -51,7 +57,14 @@ A complete finance tracking system that uses Retrieval-Augmented Generation (RAG
    
    The API will be available at `http://localhost:8000`
 
-3. **Optional - Set up Ollama for local LLM**:
+3. **Load sample data (optional)**:
+   ```bash
+   python load_sample_data.py
+   ```
+   
+   This will populate the database with sample financial documents for testing.
+
+4. **Optional - Set up Ollama for local LLM**:
    ```bash
    # Install Ollama
    curl https://ollama.ai/install.sh | sh
