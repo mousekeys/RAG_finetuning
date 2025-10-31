@@ -227,7 +227,7 @@ fun RelevantDocumentCard(document: RelevantDocument) {
                 )
                 metadata["amount"]?.let { amount ->
                     Text(
-                        text = "Amount: $$amount",
+                        text = "Amount: \$$amount",
                         fontSize = 12.sp,
                         color = Color.Gray
                     )

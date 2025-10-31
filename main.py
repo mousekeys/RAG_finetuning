@@ -111,8 +111,9 @@ async def add_document(doc: DocumentInput):
             "date": doc.date or datetime.now().isoformat(),
         })
         
-        # Generate unique ID
-        doc_id = f"doc_{datetime.now().timestamp()}"
+        # Generate unique ID using UUID to avoid collisions
+        import uuid
+        doc_id = f"doc_{uuid.uuid4()}"
         
         # Add to collection
         collection.add(
