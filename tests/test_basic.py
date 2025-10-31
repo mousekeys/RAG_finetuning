@@ -4,6 +4,7 @@ Basic tests for the RAG Finance Tracking System.
 
 import sys
 import unittest
+import tempfile
 from pathlib import Path
 
 # Add src to path
@@ -47,20 +48,22 @@ class TestDocumentLoader(unittest.TestCase):
     
     def test_load_text_file(self):
         """Test loading a text file."""
-        # Create a temporary test file
-        test_file = Path("/tmp/test_doc.txt")
-        test_content = "This is a test document for RAG system. " * 50
-        test_file.write_text(test_content)
+        # Create a temporary test file using tempfile
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.txt', delete=False) as f:
+            test_file = Path(f.name)
+            test_content = "This is a test document for RAG system. " * 50
+            f.write(test_content)
         
-        loader = DocumentLoader(chunk_size=100, chunk_overlap=20)
-        documents = loader.load_text_file(test_file)
-        
-        self.assertGreater(len(documents), 0)
-        self.assertTrue(all(doc.page_content for doc in documents))
-        self.assertTrue(all("source" in doc.metadata for doc in documents))
-        
-        # Cleanup
-        test_file.unlink()
+        try:
+            loader = DocumentLoader(chunk_size=100, chunk_overlap=20)
+            documents = loader.load_text_file(test_file)
+            
+            self.assertGreater(len(documents), 0)
+            self.assertTrue(all(doc.page_content for doc in documents))
+            self.assertTrue(all("source" in doc.metadata for doc in documents))
+        finally:
+            # Cleanup
+            test_file.unlink()
 
 
 class TestEmbeddings(unittest.TestCase):

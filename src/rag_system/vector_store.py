@@ -117,8 +117,11 @@ class VectorStore:
             Number of documents
         """
         try:
-            collection = self.vectorstore._collection
-            return collection.count()
+            # Get count using ChromaDB's collection API
+            collection = self.vectorstore.get()
+            if collection and 'ids' in collection:
+                return len(collection['ids'])
+            return 0
         except Exception as e:
             print(f"Error getting document count: {e}")
             return 0
