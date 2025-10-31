@@ -1,0 +1,2 @@
+rootProject.name = "RAG Finance Tracker"
+include ':app'
