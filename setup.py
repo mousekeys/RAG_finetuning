@@ -33,7 +33,7 @@ setup(
     python_requires=">=3.8",
     install_requires=[
         "langchain>=0.1.0",
-        "langchain-community>=0.0.13",
+        "langchain-community>=0.3.27",  # Security fix for XXE and SSRF vulnerabilities
         "chromadb>=0.4.22",
         "sentence-transformers>=2.3.1",
         "pypdf>=4.0.0",
