@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+  zipkin:
+    image: openzipkin/zipkin
+    ports:
+      - "9411:9411"    # Zipkin UI
+    networks:
+      - internal
+
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:0.111.0
+    command: ["--config=/etc/otel-collector-config.yaml"]
+    ports:
+      - "4317:4317"    # OTLP gRPC endpoint for ChromaDB
+      # Metrics port removed
+    volumes:
+      - ${PWD}/otel-collector-config.yaml:/etc/otel-collector-config.yaml
+    networks:
+      - internal
+
+  server:
+    image: chromadb/chroma
+    volumes:
+      - chroma_data:/data
+    ports:
+      - "8003:8000"    # ChromaDB HTTP API
+    networks:
+      - internal
+    # Metrics disabled by removing OTEL endpoint
+    depends_on:
+      - otel-collector
+      - zipkin
+
+networks:
+  internal:
+
+volumes:
+  chroma_data:
