@@ -9,5 +9,10 @@ class Settings(BaseSettings):
     ollama_model_name:str ="deepseek-r1:8b"
     embed_model_name:str ="mxbai-embed-large"
     
+    ocr_model_path: str = "/home/sinju/Documents/Fuse_locked/Ocr/fine"
+    
+    
+    
+    
     
 settings = Settings()

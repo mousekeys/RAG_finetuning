@@ -5,10 +5,9 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="RAG API with Classes & Pydantic")
 
-# Enable CORS for mobile app access
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # restrict later
+    allow_origins=["*"],  
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
