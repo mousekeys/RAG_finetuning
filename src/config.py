@@ -2,7 +2,7 @@ from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
     app_name: str = "Finance Tracking App"
-    collection_name: str = "financialRAG_records"
+    collection_name: str = "financeRAG"
     database_name: str = "finance_db"
     chroma_port: int=8003
     chroma_host:str = "localhost"

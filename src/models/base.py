@@ -20,3 +20,9 @@ class DocumentAddRequest(BaseModel):
 class DocumentAddResponse(BaseModel):
     status: str = Field(..., description="Status of the add record operation.")
     count: int = Field(..., description="Number of records added successfully.")
+    
+class OCRKVPResponse(BaseModel):
+    kvp_extraction: dict = Field(..., description="Key-Value pairs extracted from the OCR process.")
+    
+class OCRKVPRequest(BaseModel):
+    image_path: str = Field(..., description="Path to the image for OCR KVP extraction.")

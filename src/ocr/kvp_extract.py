@@ -28,23 +28,40 @@ class OCRKVPExtractor:
             return ""
 
         kvpair = {}
+        
+        if len(structured_result)<11:
+            kvpair['Description'] = structured_result[0]['text']
+            kvpair["Reference Code"] = int(extract_value("Reference Code", structured_result[1]['text']))
 
-        kvpair['Description'] = structured_result[0]['text']
-        kvpair["Reference Code"] = int(extract_value("Reference Code", structured_result[1]['text']))
+            date_str = extract_value("Date/Time", structured_result[2]['text'])[:-1]
+            date_obj = datetime.strptime(date_str, '%d %b %Y,%I:%M %p')
+            kvpair["Date/Time"] = date_obj
 
-        date_str = extract_value("Date/Time", structured_result[2]['text'])[:-1]
-        date_obj = datetime.strptime(date_str, '%d %b %Y,%I:%M %p')
-        kvpair["Date/Time"] = date_obj
+            kvpair["Channel"] = extract_value("Channel", structured_result[3]['text'])
+            kvpair["Payment Attribute"] = extract_value("Payment Attribute", structured_result[4]['text'])
+            kvpair["Service Name"] = extract_value("Service Name", structured_result[5]['text'])
+            kvpair["Amount (NPR)"] = float(extract_value("Amount (NPR)", structured_result[6]['text']))
+            kvpair["Initiator"] = extract_value("Initiator", structured_result[7]['text'])
+            kvpair["Receiver Name"] = extract_value("Receiver Name", structured_result[8]['text'])
+            kvpair["Status"] = extract_value("Status", structured_result[9 ]['text'])
+        
+        else:
+            kvpair['Description'] = structured_result[0]['text']
+            kvpair["Reference Code"] = int(extract_value("Reference Code", structured_result[1]['text']))
 
-        kvpair["Channel"] = extract_value("Channel", structured_result[3]['text'])
-        kvpair["Payment Attribute"] = extract_value("Payment Attribute", structured_result[4]['text'])
-        kvpair["Service Name"] = extract_value("Service Name", structured_result[5]['text'])
-        kvpair["Amount (NPR)"] = float(extract_value("Amount (NPR)", structured_result[6]['text']))
-        kvpair["Initiator"] = extract_value("Initiator", structured_result[7]['text'])
-        kvpair["Qr Merchant Name"] = extract_value("Qr Merchant Name", structured_result[8]['text'])
+            date_str = extract_value("Date/Time", structured_result[2]['text'])[:-1]
+            date_obj = datetime.strptime(date_str, '%d %b %Y,%I:%M %p')
+            kvpair["Date/Time"] = date_obj
 
-        kvpair["Remarks"] = extract_value("Remarks", structured_result[9]['text'])
-        kvpair["Status"] = extract_value("Status", structured_result[10 ]['text'])
+            kvpair["Channel"] = extract_value("Channel", structured_result[3]['text'])
+            kvpair["Payment Attribute"] = extract_value("Payment Attribute", structured_result[4]['text'])
+            kvpair["Service Name"] = extract_value("Service Name", structured_result[5]['text'])
+            kvpair["Amount (NPR)"] = float(extract_value("Amount (NPR)", structured_result[6]['text']))
+            kvpair["Initiator"] = extract_value("Initiator", structured_result[7]['text'])
+            kvpair["Qr Merchant Name"] = extract_value("Qr Merchant Name", structured_result[8]['text'])
+
+            kvpair["Remarks"] = extract_value("Remarks", structured_result[9]['text'])
+            kvpair["Status"] = extract_value("Status", structured_result[10 ]['text'])
         
         return kvpair
 
@@ -66,7 +83,7 @@ class OCRKVPExtractor:
         kvp_extract = self.parse_kvp_response(output_dict)
         return kvp_extract
 
-if __name__ == "__main__":
-    ocr_extractor = OCRKVPExtractor()
-    result = ocr_extractor.ocr_kvp_extraction_with_layout()
-    print("Extracted Key-Value Pairs:", result)
+# if __name__ == "__main__":
+#     ocr_extractor = OCRKVPExtractor()
+#     result = ocr_extractor.ocr_kvp_extraction_with_layout()
+#     print("Extracted Key-Value Pairs:", result)
