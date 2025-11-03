@@ -1,22 +1,10 @@
 import numpy as np
 
 class OCRBBoxProcessor:
-    # def __init__(self, ocr):
-    #     self.ocr = ocr
 
 
     def expand_boxes_y(self, boxes: list[list[float]], y_expand:int =5, x_expand:int =3, img_height:int =None):
-        """
-        Expands each box vertically by y_expand pixels.
-        
-        Args:
-            boxes (List[List[float]]): List of [x1, y1, x2, y2] boxes.
-            y_expand (float): Pixels to expand upward and downward.
-            img_height (float, optional): If provided, ensures boxes stay within image height.
 
-        Returns:
-            List[List[float]]: Vertically expanded boxes.
-        """
         expanded = []
         for box in boxes:
             x1, y1, x2, y2 = box
@@ -33,19 +21,7 @@ class OCRBBoxProcessor:
         return expanded
 
     def merge_boxes_iterative(self, boxes: list[list[float]], iou_threshold:int =0.5, proximity_threshold:int =2):
-        """
-        Iteratively merge boxes that overlap or are vertically close until stable.
-        
-        Args:
-            boxes (List[List[float]]): List of [x1, y1, x2, y2] boxes.
-            iou_threshold (float): IOU threshold for merging.
-            proximity_threshold (float): Vertical proximity threshold (px).
-        
-        Returns:
-            List[List[float]]: List of merged boxes.
-        """
-        
-        
+
         def iou(boxA, boxB):
             # Intersection
             xA = max(boxA[0], boxB[0])

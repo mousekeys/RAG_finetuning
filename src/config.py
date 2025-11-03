@@ -8,11 +8,7 @@ class Settings(BaseSettings):
     chroma_host:str = "localhost"
     ollama_model_name:str ="deepseek-r1:8b"
     embed_model_name:str ="mxbai-embed-large"
-    
-    ocr_model_path: str = "/home/sinju/Documents/Fuse_locked/Ocr/fine"
-    
-    
-    
-    
-    
+
+    ocr_model_path: str = "../fintuned_models/fine"
+
 settings = Settings()
