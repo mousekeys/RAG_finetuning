@@ -2,9 +2,9 @@
 
 ## To dos:
   * Performed RAG and LLM finetuning, for data analysis.
-  * Could make it beter by using SLM instead of json.
-  * Creating a simple app that automates finding the records could improve user expereince.
-  * QwenVL-8b didnt perform well on images and took a large amount of time so, had to resort to OCR.
-  * deppseek-r1:8b works great and fast as well with chromaDB RAG with 1024 size embedding, the texts are small so could use a smaller embedding model.
-  * Creating a easier way to finetune LLM, a script would allow things to be more personalized for now.
-  * Currently hardcoded for bank statement image from mobile banking, finetuning qwenVL for OCR and data extarction would make it more versatile.
+  * This could be made more context rich and better by using SLM instead of json.
+  * Creating a simple automation approach that automates finding the records could improve user expereince.
+  * QwenVL-8b didn't perform well on images and took a large amount of time as well. So,I had to resort to OCR.
+  * Deppseek-r1:8b works great and fast as well, with chromaDB for RAG which has 1024 size embeddings. The texts are small so, using a smaller embedding model would make it more space effecient.
+  * Creating a easier way to finetune LLM, such as a script that would take the data and streamline the entire finetuning process, would allow things to be more personalized for now.
+  * Currently, the code is hardcoded for images of bank statement from mobile banking. Finetuning qwenVL for OCR and data extarction would make it more versatile.
