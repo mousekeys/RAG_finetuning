@@ -1,4 +1,4 @@
-# RAG_financetracking
+# RAG_finetuning
 
 ## To dos:
   * Performed RAG and LLM finetuning, for data analysis.
