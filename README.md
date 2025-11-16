@@ -26,20 +26,19 @@ Follow the steps below to run the project locally.
 You will need:
 
 * **Docker** and **Docker Compose** (recommended)
-* **Python 3.x** (if running manually)
+* **Python 3.11** (recommended)
 
 ---
 
 ## 1. Environment Setup (Recommended: Docker)
 
-The easiest way to start the environment is with Docker Compose:
+The finetuned LLM can be tun using Docker Compose:
 
 ```bash
 # Clone the repository
 git clone https://github.com/mousekeys/RAG_finetuning.git
 cd RAG_finetuning
 
-# Build and run all services
 docker-compose up --build
 ```
 
@@ -47,7 +46,7 @@ docker-compose up --build
 
 ## 2. Manual Setup (Python)
 
-If running directly via Python:
+To run the UI and backend:
 
 ### Install Dependencies
 
@@ -73,13 +72,35 @@ streamlit run streamlitUI.py
 
 ```
 RAG_finetuning/
-├── src/                      # Core source code for RAG, finetuning, and data processing
-├── requirements.txt          # Python dependencies
-├── docker-compose.yml        # Docker services configuration
-├── server.py                 # Backend RAG/LLM server
-├── streamlitUI.py            # Streamlit UI
-├── README.md                 # Project documentation
-└── .gitignore                # Git ignore rules
+├── src/
+│   ├── __pycache__/
+│   ├── core/
+│   │   ├── __pycache__/
+│   │   ├── __init__.py         # Core package initialization
+│   │   ├── db_client.py        # Database client (likely ChromaDB connection management)
+│   │   ├── embedder.py         # Handles running the embedding model
+│   │   ├── generator.py        # Logic for generating the final response using the LLM
+│   │   ├── layout.py           # Functions related to document layout analysis (multimodal/OCR prep)
+│   │   ├── pipeline.py         # The main RAG execution flow
+│   │   └── retriever.py        # Logic for fetching relevant documents from the vector store
+│   ├── models/
+│   │   ├── __pycache__/
+│   │   └── base.py             # Base classes or configurations for LLMs/other models
+│   └── ocr/
+│       ├── __pycache__/
+│       ├── ocr_models/         # Directory for various OCR model implementations or configs
+│       ├── __init__.py
+│       ├── bbox.py             # Bounding box processing for OCR output
+│       ├── kvp_extract.py      # Key-Value Pair (KVP) extraction logic from OCR results
+│       ├── ocr_finetune.py     # Script/module for finetuning the OCR/extraction pipeline
+│       └── ocrsurya.py         # Specific module likely implementing the 'Surya' OCR/layout model
+├── requirements.txt          # Python dependencies.
+├── docker-compose.yml        # Docker setup file for environment configuration.
+├── server.py                 # Backend application (main entry point for the API server).
+├── streamlitUI.py            # Streamlit application for the user interface.
+├── README.md                 # Project documentation.
+└── .gitignore                # Files/directories to ignore in version control.
+
 ```
 
 ---
