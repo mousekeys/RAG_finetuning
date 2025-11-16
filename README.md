@@ -32,7 +32,7 @@ You will need:
 
 ## 1. Environment Setup (Recommended: Docker)
 
-The finetuned LLM can be tun using Docker Compose:
+The chromadb is intialized using Docker Compose:
 
 ```bash
 # Clone the repository
