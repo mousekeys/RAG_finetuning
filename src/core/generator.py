@@ -16,7 +16,7 @@ class Generator:
         #     raise ValueError("Response generation failed.")
         return gen_response['response']
     
-    def ocr_kvp_extraction(self,image_path:str):
+    def ocrimg_kvp_extraction(self,image_path:str):
         image = Image.open(image_path).convert("RGB")
         messages = [
         {

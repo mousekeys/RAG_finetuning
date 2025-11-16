@@ -38,7 +38,7 @@ def add_documents_api(documents):
     else:
         st.error("Error adding documents")
         return None 
-    
+
     
 st.subheader("Add Financial Documents")
 doc_files = st.file_uploader(
