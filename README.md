@@ -109,23 +109,23 @@ RAG_finetuning/
 
 Planned improvements include:
 
-### 🔹 Context Richness
+### 1. Context Richness
 
 Migrate from basic JSON structures to **Structured Language Models (SLM)** for richer context.
 
-### 🔹 Automated Record Finding
+### 2. Automated Record Finding
 
 Implement automation to identify and fetch relevant records for improved UX.
 
-### 🔹 Embedding Optimization
+### 3. Embedding Optimization
 
 Explore using a **smaller embedding model** to reduce storage, since current text chunks are small.
 
-### 🔹 Streamlined Finetuning Pipeline
+### 4. Streamlined Finetuning Pipeline
 
 Develop a fully automated script for the entire model finetuning lifecycle.
 
-### 🔹 Multimodal Versatility
+### 5. Multimodal Versatility
 
 Finetune a multimodal model (e.g., **QwenVL**) for more general OCR and data extraction tasks.
 
